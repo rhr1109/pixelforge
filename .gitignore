@@ -1,0 +1,34 @@
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node
+node_modules/
+package-lock.json
+
+# Vercel
+.vercel
+
+# Dev / test artifacts
+.playwright-mcp/
+.claude/
+screenshots/.claude/
+screenshots/.playwright-mcp/
+
+# Ad-hoc preview screenshots from local dev
+home-*.png
+home-full.png
+games-page.png
+popular-games-*.png
+game-modal-*.png
+saeukkang-*.png
+mobile-*.png
+simbang-play.png
+simbang-gameplay.png
+screenshots/simbang-gameplay.png
+screenshots/simbang-start.png
+screenshots/game-modal-*.png
+screenshots/home-*.png
+screenshots/games-page.png

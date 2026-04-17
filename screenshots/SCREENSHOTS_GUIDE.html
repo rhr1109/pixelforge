@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixelforge — 주요 화면 캡처 가이드</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:#0D1117;color:#E6EDF3;line-height:1.7}
+.container{max-width:1000px;margin:0 auto;padding:40px 20px}
+h1{font-size:32px;text-align:center;margin-bottom:8px}
+h1 span{background:linear-gradient(135deg,#A78BFA,#06D6A0);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#8B949E;margin-bottom:48px;font-size:16px}
+.screen{background:#161B22;border:1px solid #30363D;border-radius:16px;margin-bottom:32px;overflow:hidden}
+.screen-head{padding:24px 32px;border-bottom:1px solid #30363D;display:flex;align-items:center;gap:16px}
+.screen-num{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#7C3AED,#06D6A0);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;
+}
+.screen-name{font-size:20px;font-weight:700}
+.tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;margin-left:8px}
+.tag-core{background:rgba(6,214,160,.15);color:#06D6A0}
+.tag-ent{background:rgba(255,209,102,.15);color:#FFD166}
+.tag-biz{background:rgba(124,58,237,.15);color:#A78BFA}
+.tag-social{background:rgba(239,71,111,.15);color:#EF476F}
+.screen-body{padding:32px}
+.desc{font-size:15px;color:#8B949E;margin-bottom:20px}
+.features{list-style:none;margin-bottom:20px}
+.features li{padding:8px 0 8px 28px;position:relative;font-size:14px;color:#C9D1D9}
+.features li::before{content:'▸';position:absolute;left:0;color:#7C3AED;font-weight:800}
+.features li strong{color:#E6EDF3}
+.placeholder{
+  background:#21262D;border:2px dashed #30363D;border-radius:12px;
+  padding:48px 20px;text-align:center;color:#6E7681;font-size:14px;
+}
+.placeholder .ph-icon{font-size:48px;display:block;margin-bottom:12px}
+.summary{
+  background:linear-gradient(135deg,#7C3AED,#06D6A0);border-radius:16px;
+  padding:36px;text-align:center;color:#fff;margin-top:48px;
+}
+.summary h2{font-size:26px;margin-bottom:8px}
+.summary p{opacity:.9;font-size:15px;margin-bottom:24px}
+.sum-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.sum-stat .num{font-size:36px;font-weight:800}
+.sum-stat .label{font-size:12px;opacity:.8}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>⚒️ <span>Pixelforge</span> — 주요 화면 캡처 가이드</h1>
+  <p class="subtitle">QA Engineer 검증 보고서 | 7개 핵심 화면 분석</p>
+
+  <!-- 1 -->
+  <div class="screen">
+    <div class="screen-head">
+      <div class="screen-num">1</div>
+      <div><div class="screen-name">홈 / 랜딩 페이지</div>
+        <span class="tag tag-core">핵심</span><span class="tag tag-ent">엔터테인먼트</span><span class="tag tag-biz">상업성</span>
+      </div>
+    </div>
+    <div class="screen-body">
+      <div class="desc">앱 진입 시 첫 화면. 히어로 섹션에서 플랫폼 가치를 전달하고, 트렌딩 에셋·인기 게임·주간 리더보드로 즉각적인 탐색을 유도합니다.</div>
+      <ul class="features">
+        <li><strong>히어로 섹션:</strong> 대장장이 마스코트(Forgy) 플로팅 애니메이션 + "상상을 픽셀로, 픽셀을 게임으로" 그라데이션 타이포</li>
+        <li><strong>실시간 통계:</strong> 에셋 1,247개 / 게임 384개 / 크리에이터 8,923명 / 다운로드 52.4K 표시</li>
+        <li><strong>트렌딩 에셋 4개:</strong> 카드 호버 시 리프트 + 그림자 효과, FREE/POPULAR/NEW/HOT 배지</li>
+        <li><strong>인기 게임 3개:</strong> 호버 시 플레이 오버레이 출현, 장르 태그, 플레이수/별점/댓글수 표시</li>
+        <li><strong>주간 리더보드:</strong> 에셋·게임 부문 2열 병렬, 금은동 배지 컬러링</li>
+      </ul>
+      <div class="placeholder"><span class="ph-icon">🏠</span>index.html을 브라우저에서 열면 이 화면이 표시됩니다<br><strong>캡처:</strong> 브라우저 F12 → 1440x900 → 전체 페이지 스크린샷</div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="screen">
+    <div class="screen-head">
+      <div class="screen-num">2</div>
+      <div><div class="screen-name">에셋 브라우저</div>
+        <span class="tag tag-core">핵심</span><span class="tag tag-biz">상업성</span>
+      </div>
+    </div>
+    <div class="screen-body">
+      <div class="desc">게임 에셋을 카테고리별로 탐색하는 핵심 페이지. 9개 카테고리 필터와 정렬 기능으로 원하는 에셋을 빠르게 찾을 수 있습니다.</div>
+      <ul class="features">
+        <li><strong>9개 카테고리:</strong> 스프라이트, 타일셋, 오디오/BGM, UI 키트, 3D 모델, 게임 템플릿, 이펙트/VFX, 폰트 + 전체</li>
+        <li><strong>4종 정렬:</strong> 인기순, 최신순, 다운로드순, 좋아요순</li>
+        <li><strong>에셋 카드 12종:</strong> 카테고리별 고유 그라데이션 썸네일, 아이콘, 배지, 태그, 좋아요/다운로드 수</li>
+        <li><strong>좋아요 버튼:</strong> 하트 토글 + localStorage 영속 저장</li>
+        <li><strong>에셋 상세 모달:</strong> 카드 클릭 시 풀사이즈 미리보기 + 상세정보 + 무료 다운로드 버튼</li>
+      </ul>
+      <div class="placeholder"><span class="ph-icon">🎨</span>상단 네비게이션 "에셋" 클릭 후 카테고리 필터 테스트<br><strong>테스트:</strong> "스프라이트" → "타일셋" 필터 전환, 카드 클릭하여 모달 확인</div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="screen">
+    <div class="screen-head">
+      <div class="screen-num">3</div>
+      <div><div class="screen-name">게임 쇼케이스</div>
+        <span class="tag tag-core">핵심</span><span class="tag tag-ent">엔터테인먼트</span>
+      </div>
+    </div>
+    <div class="screen-body">
+      <div class="desc">유저들이 자신의 게임을 올려 자랑하고, 다른 유저가 플레이·평가·댓글을 남기는 쇼케이스 공간입니다.</div>
+      <ul class="features">
+        <li><strong>장르 필터 7종:</strong> 전체, 플랫포머, RPG, 퍼즐, 슈터, 어드벤처, 캐주얼</li>
+        <li><strong>게임 카드:</strong> 호버 시 다크 오버레이 + 플레이 버튼이 스케일 업 애니메이션으로 등장</li>
+        <li><strong>게임 상세 모달:</strong> 대형 프리뷰 + 플레이 버튼 + 설명 + 사용 에셋 크레딧 + 댓글 시스템</li>
+        <li><strong>에셋 크레딧 연결:</strong> 어떤 Pixelforge 에셋으로 만들었는지 표시 → 에셋-게임 생태계</li>
+        <li><strong>댓글 시스템:</strong> 실시간 댓글 입력 및 기존 댓글 표시</li>
+      </ul>
+      <div class="placeholder"><span class="ph-icon">🎮</span>상단 "게임" 클릭 → 카드 호버 → 카드 클릭하여 모달 확인<br><strong>핵심 포인트:</strong> 호버 시 ▶ 플레이 버튼 등장 애니메이션</div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="screen">
+    <div class="screen-head">
+      <div class="screen-num">4</div>
+      <div><div class="screen-name">업로드 (에셋 / 게임)</div>
+        <span class="tag tag-core">핵심</span><span class="tag tag-biz">상업성</span>
+      </div>
+    </div>
+    <div class="screen-body">
+      <div class="desc">에셋과 게임을 업로드하는 투인원 페이지. 탭 전환으로 에셋/게임 업로드 폼을 선택합니다.</div>
+      <ul class="features">
+        <li><strong>드래그 앤 드롭 업로드:</strong> 파일을 끌어놓으면 파일 리스트 표시 (이름, 크기, 삭제 가능)</li>
+        <li><strong>에셋 업로드 폼:</strong> 이름, 카테고리(8종), 라이선스(5종), 설명, 태그 입력</li>
+        <li><strong>게임 업로드 폼:</strong> 이름, 장르(6종), 외부 링크, 설명, 에셋 크레딧, 태그 입력</li>
+        <li><strong>즉시 반영:</strong> 업로드 시 에셋 브라우저/게임 쇼케이스에 실시간 추가</li>
+        <li><strong>게이미피케이션:</strong> 업로드 시 XP 획득 + 컨페티 축하 효과</li>
+      </ul>
+      <div class="placeholder"><span class="ph-icon">📤</span>"업로드" 클릭 → 에셋/게임 탭 전환 → 폼 작성 후 게시<br><strong>테스트:</strong> 이름만 입력 후 "게시하기" → 에셋 브라우저에서 등록 확인</div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="screen">
+    <div class="screen-head">
+      <div class="screen-num">5</div>
+      <div><div class="screen-name">커뮤니티 피드</div>
+        <span class="tag tag-social">소셜</span><span class="tag tag-ent">엔터테인먼트</span>
+      </div>
+    </div>
+    <div class="screen-body">
+      <div class="desc">크리에이터들이 소식, 작업물, 팁을 공유하는 소셜 피드. 주간 랭킹, 업적, 공지사항이 사이드바에 배치됩니다.</div>
+      <ul class="features">
+        <li><strong>게시글 작성:</strong> 텍스트 입력 + 이미지/링크/태그 첨부 버튼 (UI)</li>
+        <li><strong>피드 카드:</strong> 유저 아바타, 시간, 콘텐츠, 이미지, 좋아요/댓글/공유 액션</li>
+        <li><strong>샘플 게시글 4개:</strong> 에셋 출시, 게임 출시, 타일셋 팁, VFX 작업과정 등 다양한 콘텐츠</li>
+        <li><strong>사이드바:</strong> 주간 랭킹 리더보드 (금은동 배지), 업적 그리드 (8종), 공지사항</li>
+        <li><strong>인터랙션:</strong> 좋아요 클릭 시 즉시 카운트 증가 + 토스트 알림</li>
+      </ul>
+      <div class="placeholder"><span class="ph-icon">💬</span>"커뮤니티" 클릭 → 게시글 작성 → 피드 확인<br><strong>테스트:</strong> 게시글 작성 후 피드 최상단에 등록 확인</div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="screen">
+    <div class="screen-head">
+      <div class="screen-num">6</div>
+      <div><div class="screen-name">프로필 페이지</div>
+        <span class="tag tag-social">소셜</span><span class="tag tag-biz">상업성</span>
+      </div>
+    </div>
+    <div class="screen-body">
+      <div class="desc">유저의 작품 포트폴리오이자 개인 페이지. 탭으로 내 에셋/게임/좋아요/설정을 관리합니다.</div>
+      <ul class="features">
+        <li><strong>프로필 헤더:</strong> 그라데이션 아바타, 닉네임, 핸들, 소개글, 4대 통계 (에셋/게임/좋아요/팔로워)</li>
+        <li><strong>4개 탭:</strong> 내 에셋, 내 게임, 좋아요, 설정</li>
+        <li><strong>빈 상태 UI:</strong> 업로드 전 친근한 안내 메시지 + CTA 버튼</li>
+        <li><strong>설정 탭:</strong> 닉네임, 소개, 이메일, 포트폴리오 링크 편집</li>
+        <li><strong>팔로워 수:</strong> XP에 연동 (활동량 기반 시뮬레이션)</li>
+      </ul>
+      <div class="placeholder"><span class="ph-icon">👤</span>우상단 아바타 아이콘 클릭 → 프로필 진입<br><strong>테스트:</strong> 에셋 업로드 후 "내 에셋" 탭에서 표시 확인</div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="screen">
+    <div class="screen-head">
+      <div class="screen-num">7</div>
+      <div><div class="screen-name">모달 (에셋 상세 / 게임 상세)</div>
+        <span class="tag tag-core">핵심</span><span class="tag tag-ent">엔터테인먼트</span>
+      </div>
+    </div>
+    <div class="screen-body">
+      <div class="desc">에셋·게임 카드 클릭 시 오버레이 모달로 상세 정보를 표시합니다. 다운로드, 좋아요, 공유 등 핵심 CTA가 집중됩니다.</div>
+      <ul class="features">
+        <li><strong>에셋 모달:</strong> 대형 썸네일, 태그, 좋아요/다운로드 수, 상세 설명, 라이선스/제작자/날짜, "무료 다운로드" CTA</li>
+        <li><strong>게임 모달:</strong> 대형 프리뷰, "플레이하기" CTA, 플레이수/별점/댓글, 설명, 사용 에셋 크레딧, 댓글 시스템</li>
+        <li><strong>배경 블러:</strong> 오버레이 backdrop-filter: blur 효과</li>
+        <li><strong>닫기:</strong> X 버튼 또는 오버레이 영역 클릭으로 닫기</li>
+        <li><strong>다운로드 시:</strong> 컨페티 파티클 + XP 획득 + 토스트 알림</li>
+      </ul>
+      <div class="placeholder"><span class="ph-icon">🔍</span>에셋 카드 또는 게임 카드 클릭하여 모달 확인<br><strong>테스트:</strong> "무료 다운로드" 클릭 → 컨페티 + 토스트 확인</div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary">
+    <h2>⚒️ Pixelforge QA 검증 완료</h2>
+    <p>모든 기능이 API Key 없이 100% 클라이언트 사이드에서 정상 동작합니다.</p>
+    <div class="sum-stats">
+      <div class="sum-stat"><div class="num">7</div><div class="label">주요 화면</div></div>
+      <div class="sum-stat"><div class="num">12</div><div class="label">샘플 에셋</div></div>
+      <div class="sum-stat"><div class="num">6</div><div class="label">샘플 게임</div></div>
+      <div class="sum-stat"><div class="num">9</div><div class="label">카테고리</div></div>
+      <div class="sum-stat"><div class="num">8</div><div class="label">업적</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
