@@ -14,7 +14,7 @@
 ## 내 게임
 
 - [심방런 — 도망가는 남편을 잡아라!](https://game-livid-beta.vercel.app) — 실제 플레이 스크린샷 썸네일
-- 새우깡으로 한계돌파 — 근육질 비둘기 체이스 (SVG 썸네일)
+- [새우깡으로 한계돌파!](https://saeukkang-limit-break.vercel.app/) — 근육질 비둘기 체이스 (SVG 썸네일)
 
 ## 로컬 실행
 
