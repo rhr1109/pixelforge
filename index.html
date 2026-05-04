@@ -742,59 +742,38 @@ select.form-input{cursor:pointer}
 
     <!-- Game Upload -->
     <div id="uploadGameForm" style="display:none">
-      <div style="display:flex;gap:8px;margin-bottom:16px">
-        <button class="btn btn-primary" id="tabGameFile" onclick="switchGameSource('file')" style="flex:1">📁 파일로 업로드</button>
-        <button class="btn btn-outline" id="tabGameLink" onclick="switchGameSource('link')" style="flex:1">🔗 링크로 업로드</button>
+      <div class="upload-zone" id="gameDropZone" onclick="document.getElementById('gameFileInput').click()"
+           ondragover="event.preventDefault();this.classList.add('dragover')"
+           ondragleave="this.classList.remove('dragover')"
+           ondrop="handleDrop(event,'game')">
+        <span class="upload-icon">🎮</span>
+        <h3>게임 파일을 드래그하거나 클릭하여 업로드</h3>
+        <p>HTML5 게임, ZIP 파일, 또는 외부 링크를 사용하세요</p>
+        <input type="file" id="gameFileInput" hidden onchange="handleFileSelect(this,'game')">
       </div>
-
-      <!-- File source -->
-      <div id="gameSourceFile">
-        <div class="upload-zone" id="gameDropZone" onclick="document.getElementById('gameFileInput').click()"
-             ondragover="event.preventDefault();this.classList.add('dragover')"
-             ondragleave="this.classList.remove('dragover')"
-             ondrop="handleDrop(event,'game')">
-          <span class="upload-icon">🎮</span>
-          <h3>게임 파일을 드래그하거나 클릭하여 업로드</h3>
-          <p>HTML5 게임 또는 ZIP 파일을 업로드하세요</p>
-          <input type="file" id="gameFileInput" hidden onchange="handleFileSelect(this,'game')">
-        </div>
-        <div id="gameFileList" style="margin-top:16px"></div>
-      </div>
-
-      <!-- Link source -->
-      <div id="gameSourceLink" style="display:none">
-        <div class="upload-zone" style="cursor:default" onclick="event.stopPropagation()">
-          <span class="upload-icon">🔗</span>
-          <h3>이미 배포된 게임 URL을 입력하세요</h3>
-          <p>itch.io, GitHub Pages, Vercel, 자체 서버 등 어디든 OK</p>
-        </div>
-        <div style="margin-top:16px">
-          <div class="form-group">
-            <label>게임 플레이 링크 *</label>
-            <input type="url" class="form-input" id="gameLink" placeholder="https://your-game.example.com">
-          </div>
-          <div class="form-group">
-            <label>썸네일 이미지 URL (선택)</label>
-            <input type="url" class="form-input" id="gameThumbUrl" placeholder="https://example.com/thumb.png">
-          </div>
-        </div>
-      </div>
+      <div id="gameFileList" style="margin-top:16px"></div>
 
       <div style="margin-top:24px">
         <div class="form-group">
           <label>게임 이름 *</label>
           <input type="text" class="form-input" id="gameName" placeholder="예: Pixel Dungeon Explorer">
         </div>
-        <div class="form-group">
-          <label>장르 *</label>
-          <select class="form-input" id="gameGenre">
-            <option value="platformer">플랫포머</option>
-            <option value="rpg">RPG</option>
-            <option value="puzzle">퍼즐</option>
-            <option value="shooter">슈터</option>
-            <option value="adventure">어드벤처</option>
-            <option value="casual">캐주얼</option>
-          </select>
+        <div class="form-row">
+          <div class="form-group">
+            <label>장르 *</label>
+            <select class="form-input" id="gameGenre">
+              <option value="platformer">플랫포머</option>
+              <option value="rpg">RPG</option>
+              <option value="puzzle">퍼즐</option>
+              <option value="shooter">슈터</option>
+              <option value="adventure">어드벤처</option>
+              <option value="casual">캐주얼</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>외부 플레이 링크 (선택)</label>
+            <input type="text" class="form-input" id="gameLink" placeholder="https://...">
+          </div>
         </div>
         <div class="form-group">
           <label>게임 설명</label>
@@ -1318,15 +1297,6 @@ function switchUploadTab(tab){
   document.getElementById('tabGameUpload').className=tab==='game'?'btn btn-primary':'btn btn-outline';
 }
 
-let gameSource='file';
-function switchGameSource(src){
-  gameSource=src;
-  document.getElementById('gameSourceFile').style.display=src==='file'?'block':'none';
-  document.getElementById('gameSourceLink').style.display=src==='link'?'block':'none';
-  document.getElementById('tabGameFile').className=src==='file'?'btn btn-primary':'btn btn-outline';
-  document.getElementById('tabGameLink').className=src==='link'?'btn btn-primary':'btn btn-outline';
-}
-
 function handleDrop(e,type){
   e.preventDefault();
   e.currentTarget.classList.remove('dragover');
@@ -1382,13 +1352,6 @@ function submitAsset(){
 function submitGame(){
   const name=document.getElementById('gameName').value.trim();
   if(!name){showToast('⚠️ 게임 이름을 입력해주세요!');return}
-  const link=document.getElementById('gameLink').value.trim();
-  const thumbUrl=document.getElementById('gameThumbUrl').value.trim();
-  if(gameSource==='link'){
-    if(!link){showToast('⚠️ 게임 플레이 링크를 입력해주세요!');return}
-    try{const u=new URL(link);if(!/^https?:$/.test(u.protocol))throw 0}
-    catch(_){showToast('⚠️ 올바른 URL을 입력해주세요 (http/https)');return}
-  }
   const genre=document.getElementById('gameGenre').value;
   const desc=document.getElementById('gameDesc').value;
   const credits=document.getElementById('gameCredits').value;
@@ -1399,9 +1362,7 @@ function submitGame(){
     id:Date.now(),name,author:'PixelForgy',genre,
     thumb:thumbs[Math.floor(Math.random()*thumbs.length)],
     icon:genreIcons[genre]||'🎮',plays:0,rating:0,comments:0,
-    desc:desc||'사용자 업로드 게임',credits:credits||'직접 제작',
-    ...(link?{link}:{}),
-    ...(thumbUrl?{img:thumbUrl}:{})
+    desc:desc||'사용자 업로드 게임',credits:credits||'직접 제작'
   };
   state.myGames.push(game);
   GAME_DATA.unshift(game);
@@ -1409,14 +1370,12 @@ function submitGame(){
 
   addXP(50);
   launchConfetti();
-  showToast(link?'🎮 게임이 LIVE 링크로 게시되었습니다!':'🎮 게임이 성공적으로 게시되었습니다!');
+  showToast('🎮 게임이 성공적으로 게시되었습니다!');
 
   document.getElementById('gameName').value='';
   document.getElementById('gameDesc').value='';
   document.getElementById('gameCredits').value='';
   document.getElementById('gameTags').value='';
-  document.getElementById('gameLink').value='';
-  document.getElementById('gameThumbUrl').value='';
   document.getElementById('gameFileList').innerHTML='';
   renderAllGames('all');
   initHome();
